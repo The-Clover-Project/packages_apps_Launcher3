@@ -24,6 +24,8 @@ import static com.android.launcher3.BuildConfig.IS_DEBUG_DEVICE;
 import static com.android.launcher3.BuildConfig.IS_STUDIO_BUILD;
 import static com.android.launcher3.states.RotationHelper.ALLOW_ROTATION_PREFERENCE_KEY;
 
+import static com.android.launcher.OverlayCallbackImpl.KEY_DESKTOP_LABELS;
+import static com.android.launcher.OverlayCallbackImpl.KEY_DRAWER_LABELS;
 import static com.android.launcher.OverlayCallbackImpl.KEY_MINUS_ONE;
 
 import android.app.Activity;
@@ -53,6 +55,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.launcher3.BuildConfig;
+import com.android.launcher3.InvariantDeviceProfile;
 import com.android.launcher3.Flags;
 import com.android.launcher3.LauncherFiles;
 import com.android.launcher3.LauncherPrefs;
@@ -121,7 +124,16 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
     }
 
     @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) { }
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        switch (key) {
+            case KEY_DESKTOP_LABELS:
+            case KEY_DRAWER_LABELS:
+                InvariantDeviceProfile.INSTANCE.get(this).onConfigChanged(getApplicationContext());
+                break;
+            default:
+                break;
+        }
+    }
 
     private boolean startPreference(String fragment, Bundle args, String key) {
         if (getSupportFragmentManager().isStateSaved()) {
