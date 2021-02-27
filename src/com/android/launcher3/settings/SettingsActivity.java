@@ -27,6 +27,8 @@ import static com.android.launcher3.states.RotationHelper.ALLOW_ROTATION_PREFERE
 import static com.android.launcher.OverlayCallbackImpl.KEY_DESKTOP_LABELS;
 import static com.android.launcher.OverlayCallbackImpl.KEY_DOCK_SEARCH;
 import static com.android.launcher.OverlayCallbackImpl.KEY_DRAWER_LABELS;
+import static com.android.launcher.OverlayCallbackImpl.KEY_FONT_SIZE;
+import static com.android.launcher.OverlayCallbackImpl.KEY_ICON_SIZE;
 import static com.android.launcher.OverlayCallbackImpl.KEY_MINUS_ONE;
 
 import android.app.Activity;
@@ -133,6 +135,8 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
                 break;
             case KEY_DESKTOP_LABELS:
             case KEY_DRAWER_LABELS:
+            case KEY_FONT_SIZE:
+            case KEY_ICON_SIZE:
                 InvariantDeviceProfile.INSTANCE.get(this).onConfigChanged(getApplicationContext());
                 break;
             default:
