@@ -436,6 +436,7 @@ public class Launcher extends StatefulActivity<LauncherState>
                         case Utilities.KEY_DOCK_SEARCH:
                         case Utilities.KEY_DOCK_THEME:
                         case Utilities.KEY_SEARCH_RADIUS:
+                        case Utilities.KEY_SHOW_HOTSEAT_BG:
                             mNeedsRestart = true;
                             break;
                         default:
@@ -1408,6 +1409,8 @@ public class Launcher extends StatefulActivity<LauncherState>
         mOverviewPanel = findViewById(R.id.overview_panel);
         mHotseat = findViewById(R.id.hotseat);
         mHotseat.setWorkspace(mWorkspace);
+
+        mHotseat.setBackgroundResource(Utilities.isHotseatBgEnabled(this) ? R.drawable.bkg_appseat : 0);
 
         // Setup the drag layer
         mDragLayer.setup(mDragController, mWorkspace);
