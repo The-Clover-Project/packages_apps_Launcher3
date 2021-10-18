@@ -400,6 +400,15 @@ public class TaskOverlayFactory implements ResourceBasedOverride {
             }
 
             @Override
+            public void onLens() {
+                if (mIsAllowedByPolicy) {
+                    endLiveTileMode(() -> mImageApi.startLensActivity());
+                } else {
+                    showBlockedByPolicyMessage();
+                }
+            }
+
+            @Override
             public void onClearAllTasksRequested() {
                 endLiveTileMode(TaskOverlay.this::clearAllTasks);
             }
@@ -420,6 +429,9 @@ public class TaskOverlayFactory implements ResourceBasedOverride {
 
         /** User wants to start split screen with current app. */
         void onSplit();
+
+        /** User wants to launch google lens on the current task. */
+        void onLens();
 
         /** User wants to close all opened tasks. */
         void onClearAllTasksRequested();
