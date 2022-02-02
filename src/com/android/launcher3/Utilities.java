@@ -26,6 +26,7 @@ import static com.android.launcher3.util.SplitConfigurationOptions.STAGE_POSITIO
 import static com.android.launcher3.util.SplitConfigurationOptions.STAGE_POSITION_TOP_OR_LEFT;
 import static com.android.launcher3.util.SplitConfigurationOptions.STAGE_TYPE_MAIN;
 
+import static co.aospa.launcher.OverlayCallbackImpl.KEY_DOCK_SEARCH;
 import static com.android.launcher.OverlayCallbackImpl.KEY_WORKSPACE_LOCK;
 
 import android.annotation.SuppressLint;
@@ -946,6 +947,11 @@ public final class Utilities {
         } catch (PackageManager.NameNotFoundException e) {
             return false;
         }
+    }
+
+    public static boolean isQSBEnabled(Context context) {
+        SharedPreferences prefs = LauncherPrefs.getPrefs(context.getApplicationContext());
+        return prefs.getBoolean(KEY_DOCK_SEARCH, true);
     }
 
     public static boolean isWorkspaceEditAllowed(Context context) {
