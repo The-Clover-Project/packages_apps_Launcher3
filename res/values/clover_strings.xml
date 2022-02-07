@@ -128,6 +128,9 @@
 
     <!-- Top shadow -->
     <string name="show_top_shadow">Top shadow</string>
+
+    <!-- Memory info -->
+    <string name="meminfo_text">%1$s Available | %2$s Total</string>
     
     <!-- Recents icons -->
     <string name="recents_screenshot_title">Screenshot</string>
