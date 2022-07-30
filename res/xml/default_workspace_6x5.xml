@@ -18,6 +18,7 @@
 
     <!-- Hotseat (We use the screen as the position of the item in the hotseat) -->
     <!-- Dialer, Messaging, Calendar, Mail, Browser, Camera -->
+
     <resolve
         launcher:container="-101"
         launcher:screen="0"
