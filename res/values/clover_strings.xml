@@ -174,4 +174,8 @@
     <!-- App drawer scrollbar -->
     <string name="drawer_scrollbar_title">Scrollbar</string>
     <string name="drawer_scrollbar_summary">Scrollbar on side of the app drawer</string>
+
+    <!-- Kill App recents action shortcut -->
+    <string name="recent_task_option_kill_app">Kill</string>
+    <string name="recents_app_killed">App killed</string>
 </resources>
