@@ -437,6 +437,7 @@ public class Launcher extends StatefulActivity<LauncherState>
                         case Utilities.KEY_DOCK_THEME:
                         case Utilities.KEY_SEARCH_RADIUS:
                         case Utilities.KEY_SHOW_HOTSEAT_BG:
+                        case Utilities.KEY_HOTSEAT_OPACITY:
                             mNeedsRestart = true;
                             break;
                         default:
@@ -1410,7 +1411,10 @@ public class Launcher extends StatefulActivity<LauncherState>
         mHotseat = findViewById(R.id.hotseat);
         mHotseat.setWorkspace(mWorkspace);
 
-        mHotseat.setBackgroundResource(Utilities.isHotseatBgEnabled(this) ? R.drawable.bkg_appseat : 0);
+        if (Utilities.isHotseatBgEnabled(this)) {
+            mHotseat.setBackgroundResource(R.drawable.bkg_appseat);
+            mHotseat.getBackground().setAlpha(Utilities.getHotseatOpacity(this) * 255 / 100);
+        }
 
         // Setup the drag layer
         mDragLayer.setup(mDragController, mWorkspace);
