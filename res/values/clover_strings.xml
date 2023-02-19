@@ -168,4 +168,10 @@
     <!-- App drawer scrollbar -->
     <string name="drawer_scrollbar_title">Scrollbar</string>
     <string name="drawer_scrollbar_summary">Scrollbar on side of the app drawer</string>
+
+    <!-- A widget category label for grouping widgets related to battery. [CHAR_LIMIT=30] -->
+    <string name="widget_category_battery">Battery</string>
+
+    <!-- A widget category label for grouping widgets related to weather. [CHAR_LIMIT=30] -->
+    <string name="widget_category_weather">Weather</string>
 </resources>
