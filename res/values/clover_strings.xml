@@ -158,4 +158,8 @@
     <!-- Suggestions -->
     <string name="suggestion_pref_screen_title">Suggestions</string>
     <string name="suggestion_pref_screen_desc">For All Apps &amp; Home screen suggestions</string>
+
+    <!-- Haptics on DT2S -->
+    <string name="pref_haptics_on_dt2s_title">Haptics on double tap to sleep</string>
+    <string name="pref_haptics_on_dt2s_summary">Whether to perform haptics when doing double tap to sleep gesture or not</string>
 </resources>
