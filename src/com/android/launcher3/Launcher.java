@@ -448,6 +448,7 @@ public class Launcher extends StatefulActivity<LauncherState>
                         case Utilities.KEY_SMARTSPACE:
                         case Utilities.KEY_HOTSEAT_QSB_OPACITY:
                         case Utilities.KEY_HOTSEAT_QSB_STROKE_WIDTH:
+                        case Utilities.KEY_DRAWER_SCROLLBAR:
                             mNeedsRestart = true;
                             break;
                         default:
