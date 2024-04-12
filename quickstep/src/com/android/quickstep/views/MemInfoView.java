@@ -137,14 +137,28 @@ public class MemInfoView extends TextView {
         lp.gravity = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
     }
 
+    private String formatTotalMemory(long totalMemoryBytes) {
+        double totalMemoryGB = totalMemoryBytes / (1024.0 * 1024.0 * 1024.0);
+        int roundedMemoryGB = roundToNearestKnownRamSize(totalMemoryGB);
+        return roundedMemoryGB + " GB";
+    }
+    
+    private int roundToNearestKnownRamSize(double memoryGB) {
+        int[] knownSizes = {1, 2, 3, 4, 6, 8, 10, 12, 16, 32, 48, 64};
+        if (memoryGB <= 0) return 1;
+        for (int size : knownSizes) {
+            if (memoryGB <= size) return size;
+        }
+        return knownSizes[knownSizes.length - 1];
+    }
+
     private class MemInfoWorker implements Runnable {
         @Override
         public void run() {
             mActivityManager.getMemoryInfo(memInfo);
-            String availResult = Formatter.formatShortFileSize(mContext,
-                    (long) memInfo.availMem);
-            String totalResult = Formatter.formatShortFileSize(mContext,
-                    (long) memInfo.totalMem);
+            String availResult = Formatter.formatShortFileSize(mContext, memInfo.availMem);
+            long totalMemoryBytes = memInfo.totalMem;
+            String totalResult = formatTotalMemory(totalMemoryBytes);
             String text = String.format(mMemInfoText, availResult, totalResult);
             setText(text);
             mHandler.postDelayed(this, 1000);
