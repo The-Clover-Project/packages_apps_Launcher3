@@ -19,5 +19,7 @@
     <!-- Appseat -->
     <color name="appseat_color">@*android:color/system_neutral2_900</color>
 
+    <color name="clover_base_bg">@*android:color/system_accent1_100</color>
+
     <color name="gicon_mask">#1AFFFFFF</color>
 </resources>

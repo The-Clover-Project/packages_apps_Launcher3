@@ -18,4 +18,6 @@
 
     <!-- Appseat -->
     <color name="appseat_color">@*android:color/system_neutral2_50</color>
+
+    <color name="clover_base_bg">@*android:color/system_accent1_600</color>
 </resources>
