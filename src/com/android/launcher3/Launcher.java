@@ -446,6 +446,7 @@ public class Launcher extends StatefulActivity<LauncherState>
                         case Utilities.KEY_SINGLE_PAGE_CENTER:
                         case Utilities.KEY_DRAWER_SEARCH:
                         case Utilities.KEY_SMARTSPACE:
+                        case Utilities.KEY_HOTSEAT_QSB_OPACITY:
                             mNeedsRestart = true;
                             break;
                         default:

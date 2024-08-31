@@ -174,6 +174,7 @@ public final class Utilities {
     public static final String KEY_SINGLE_PAGE_CENTER = "pref_single_page_center";
     public static final String KEY_DRAWER_SEARCH = "pref_drawer_search";
     public static final String KEY_SMARTSPACE = "pref_smartspace";
+    public static final String KEY_HOTSEAT_QSB_OPACITY = "pref_hotseat_qsb_opacity";
 
     /**
      * Returns true if theme is dark.
@@ -1079,5 +1080,10 @@ public final class Utilities {
     private static boolean isSmartspaceEnabled(Context context) {
         SharedPreferences prefs = LauncherPrefs.getPrefs(context.getApplicationContext());
         return prefs.getBoolean(KEY_SMARTSPACE, true);
+    }
+
+    public static int getHotseatQsbOpacity(Context context) {
+        SharedPreferences prefs = LauncherPrefs.getPrefs(context.getApplicationContext());
+        return prefs.getInt(KEY_HOTSEAT_QSB_OPACITY, 100);
     }
 }
