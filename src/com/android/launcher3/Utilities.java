@@ -185,6 +185,7 @@ public final class Utilities {
     public static final String KEY_HOTSEAT_QSB_STROKE_WIDTH = "pref_hotseat_qsb_stroke_width";
     public static final String KEY_DRAWER_SCROLLBAR = "pref_drawer_scrollbar";
     public static final String KEY_FORCE_MONOCHROME_ICON = "pref_force_monochrome_icon";
+    public static final String KEY_AUTO_KEYABORD = "pref_auto_keyboard";
 
     /**
      * Returns true if theme is dark.
@@ -1077,5 +1078,10 @@ public final class Utilities {
     public static boolean isForcedMonoIconEnabled(Context context) {
         SharedPreferences prefs = LauncherPrefs.getPrefs(context.getApplicationContext());
         return prefs.getBoolean(KEY_FORCE_MONOCHROME_ICON, false);
-   }
+    }
+
+    public static boolean enableAutoIme(Context context) {
+        SharedPreferences prefs = LauncherPrefs.getPrefs(context.getApplicationContext());
+        return prefs.getBoolean(KEY_AUTO_KEYABORD, false);
+    }
 }
