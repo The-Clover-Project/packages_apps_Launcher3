@@ -20,6 +20,7 @@ import static androidx.preference.PreferenceFragmentCompat.ARG_PREFERENCE_ROOT;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -55,7 +56,8 @@ import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
  * Settings activity for Launcher.
  */
 public class SettingsRecents extends CollapsingToolbarBaseActivity
-        implements OnPreferenceStartFragmentCallback, OnPreferenceStartScreenCallback {
+        implements OnPreferenceStartFragmentCallback, OnPreferenceStartScreenCallback,
+        SharedPreferences.OnSharedPreferenceChangeListener{
 
     public static final String EXTRA_FRAGMENT_ARGS = ":settings:fragment_args";
 
@@ -97,6 +99,18 @@ public class SettingsRecents extends CollapsingToolbarBaseActivity
             f.setArguments(args);
             // Display the fragment as the main content.
             fm.beginTransaction().replace(com.android.settingslib.collapsingtoolbar.R.id.content_frame, f).commit();
+        }
+        LauncherPrefs.getPrefs(getApplicationContext()).registerOnSharedPreferenceChangeListener(this);
+
+    }
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        switch (key) {
+            case Utilities.KEY_RECENTS_MEMINFO:
+                LauncherAppState.getInstance(getApplicationContext()).setNeedsRestart();
+                break;
+            default:
+                break;
         }
     }
 
