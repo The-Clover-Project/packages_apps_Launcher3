@@ -28,6 +28,8 @@ import static com.android.launcher.OverlayCallbackImpl.KEY_MINUS_ONE;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -53,6 +55,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.launcher3.BuildConfig;
 import com.android.launcher3.Flags;
 import com.android.launcher3.LauncherFiles;
+import com.android.launcher3.LauncherPrefs;
 import com.android.launcher3.R;
 import com.android.launcher3.states.RotationHelper;
 import com.android.launcher3.Utilities;
@@ -64,7 +67,8 @@ import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
  * Settings activity for Launcher. Currently implements the following setting: Allow rotation
  */
 public class SettingsActivity extends CollapsingToolbarBaseActivity
-        implements OnPreferenceStartFragmentCallback, OnPreferenceStartScreenCallback {
+        implements OnPreferenceStartFragmentCallback, OnPreferenceStartScreenCallback,
+        OnSharedPreferenceChangeListener {
 
     @VisibleForTesting
     static final String DEVELOPER_OPTIONS_KEY = "pref_developer_options";
@@ -112,7 +116,12 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
             // Display the fragment as the main content.
             fm.beginTransaction().replace(com.android.settingslib.collapsingtoolbar.R.id.content_frame, f).commit();
         }
+            LauncherPrefs.getPrefs(getApplicationContext())
+                    .registerOnSharedPreferenceChangeListener(this);
     }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) { }
 
     private boolean startPreference(String fragment, Bundle args, String key) {
         if (getSupportFragmentManager().isStateSaved()) {
