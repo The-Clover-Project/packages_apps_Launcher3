@@ -42,7 +42,7 @@ import java.util.concurrent.TimeUnit;
 public class AllAppsState extends LauncherState {
 
     private static final int STATE_FLAGS =
-            FLAG_WORKSPACE_INACCESSIBLE | FLAG_CLOSE_POPUPS | FLAG_HOTSEAT_INACCESSIBLE;
+            FLAG_WORKSPACE_INACCESSIBLE | FLAG_CLOSE_POPUPS;
     private static final long BACK_CUJ_TIMEOUT_MS = TimeUnit.SECONDS.toMillis(5);
 
 
