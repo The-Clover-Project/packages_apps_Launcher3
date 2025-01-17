@@ -63,6 +63,7 @@ import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.DeadObjectException;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.os.TransactionTooLargeException;
 import android.text.Spannable;
@@ -142,7 +143,7 @@ public final class Utilities {
     public static final boolean ATLEAST_V = Build.VERSION.SDK_INT
             >= VERSION_CODES.VANILLA_ICE_CREAM;
 
-    private static final long WAIT_BEFORE_RESTART = 500;
+    private static final long WAIT_BEFORE_RESTART = 1250;
 
     /**
      * Set on a motion event dispatched from the nav bar. See {@link MotionEvent#setEdgeFlags(int)}.
@@ -974,12 +975,12 @@ public final class Utilities {
     }
 
     public static void restart(final Context context) {
-        Intent intent = new Intent(context, com.android.launcher3.Launcher.class);
-        PendingIntent pi = PendingIntent.getActivity(context, 1234,
-                intent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-        AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + WAIT_BEFORE_RESTART * 2, pi);
-        System.exit(0);
+        MODEL_EXECUTOR.execute(() -> {
+            final Handler handler = new Handler(Looper.getMainLooper());
+            handler.postDelayed(() -> {
+                android.os.Process.killProcess(android.os.Process.myPid());
+            }, WAIT_BEFORE_RESTART);
+        });
     }
 
     public static boolean isWorkspaceEditAllowed(Context context) {
