@@ -219,7 +219,7 @@ public class LauncherAppState implements SafeCloseable {
                     MODEL_EXECUTOR.execute(() -> mIconCache.clearDb());
                     mModel.forceReload();
                     if ((flags & CHANGE_OVERLAYS) != 0) {
-                        Utilities.restart(mContext);
+                        Utilities.restart();
                     }
                 }
             }
@@ -257,7 +257,7 @@ public class LauncherAppState implements SafeCloseable {
         // so we force a restart now if needed without waiting for home button press
         if (mNeedsRestart) {
             Toast.makeText(mContext, R.string.restarting_launcher_changes, Toast.LENGTH_SHORT).show();
-            Utilities.restart(mContext);
+            Utilities.restart();
         }
     }
 
