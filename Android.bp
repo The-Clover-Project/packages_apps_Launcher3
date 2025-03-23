@@ -469,6 +469,15 @@ android_library {
     ],
 }
 
+// Extra privileged permission whitelist for Launcher3 app.
+prebuilt_etc {
+    name: "privapp_whitelist_com.android.launcher3-extra",
+    system_ext_specific: true,
+    sub_dir: "permissions",
+    src: "com.android.launcher3-extra.xml",
+    filename_from_src: true,
+}
+
 //
 // Build rule for Launcher3 app.
 //
@@ -507,7 +516,10 @@ android_app {
         "Launcher2",
         "QuickSearchBox",
     ],
-    required: ["privapp_whitelist_com.android.launcher3"],
+    required: [
+        "privapp_whitelist_com.android.launcher3",
+        "privapp_whitelist_com.android.launcher3-extra",
+    ],
 
     jacoco: {
         include_filter: ["com.android.launcher3.**"],
@@ -657,6 +669,7 @@ android_app {
     ],
     required: [
         "privapp_whitelist_com.android.launcher3",
+        "privapp_whitelist_com.android.launcher3-extra",
         "launcher.quickstep.protolog.pb",
     ],
 
@@ -702,7 +715,10 @@ android_app {
         "Launcher3QuickStep",
         "QuickSearchBox",
     ],
-    required: ["privapp_whitelist_com.android.launcher3"],
+    required: [
+        "privapp_whitelist_com.android.launcher3",
+        "privapp_whitelist_com.android.launcher3-extra",
+    ],
 
     additional_manifests: [
         "go/AndroidManifest.xml",
@@ -741,7 +757,10 @@ android_app {
         "Launcher3QuickStep",
         "QuickSearchBox",
     ],
-    required: ["privapp_whitelist_com.android.launcher3"],
+    required: [
+        "privapp_whitelist_com.android.launcher3",
+        "privapp_whitelist_com.android.launcher3-extra",
+    ],
 
     additional_manifests: [
         "go/AndroidManifest.xml",
