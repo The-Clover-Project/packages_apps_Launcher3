@@ -130,7 +130,7 @@ public final class Utilities {
     public static final boolean ATLEAST_V = Build.VERSION.SDK_INT
             >= VERSION_CODES.VANILLA_ICE_CREAM;
 
-    private static final long WAIT_BEFORE_RESTART = 100; // ms
+    private static final long WAIT_BEFORE_RESTART = 750; // ms
 
     /**
      * Set on a motion event dispatched from the nav bar. See {@link MotionEvent#setEdgeFlags(int)}.
