@@ -24,4 +24,6 @@
     <dimen name="dashboard_tile_foreground_image_size">18dp</dimen>
     <dimen name="dashboard_tile_image_size">36dp</dimen>
 
+    <dimen name="theme_icon_size">24dp</dimen>
+
 </resources>
