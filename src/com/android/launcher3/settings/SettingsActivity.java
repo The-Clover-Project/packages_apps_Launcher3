@@ -78,6 +78,8 @@ public class SettingsActivity extends FragmentActivity
 
     private static final String NOTIFICATION_DOTS_PREFERENCE_KEY = "pref_icon_badging";
 
+    private static final String SHOW_HOTSEAT_QSB_KEY = "pref_show_hotseat_qsb";
+
     public static final String EXTRA_FRAGMENT_ARGS = ":settings:fragment_args";
 
     // Intent extra to indicate the pref-key to highlighted when opening the settings activity
@@ -357,6 +359,9 @@ public class SettingsActivity extends FragmentActivity
                 case KEY_SUGGESTIONS:
                     return launcherApps != null &&
                             launcherApps.isPackageEnabled(SUGGESTIONS_PACKAGE, myUserHandle());
+                case SHOW_HOTSEAT_QSB_KEY:
+                    return launcherApps != null &&
+                            launcherApps.isPackageEnabled(SEARCH_PACKAGE, myUserHandle());
             }
             return true;
         }
